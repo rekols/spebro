@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/style.qss</file>
+        <file>images/continue_disable.svg</file>
+        <file>images/continue_enable.svg</file>
+        <file>images/delete_disable.svg</file>
+        <file>images/delete_enable.svg</file>
+        <file>images/nav_downloading.svg</file>
+        <file>images/nav_finished.svg</file>
+        <file>images/new_disable.svg</file>
+        <file>images/new_enable.svg</file>
+        <file>images/pause_disable.svg</file>
+        <file>images/pause_enable.svg</file>
+    </qresource>
+</RCC>

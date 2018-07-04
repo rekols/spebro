@@ -1,0 +1,33 @@
+#SlideBar > QPushButton {
+    margin: 0;
+    text-align: left;
+    padding: 5px 15px;
+    border: none;
+    outline: none;
+}
+
+#SlideBar > QPushButton:hover {
+    background-color: #404040;
+}
+
+#SlideBar > QPushButton:checked {
+    font-weight: 500;
+    background-color: #2B2B2B;
+    border: 1px solid #2B2B2B;
+    border-left: none;
+    border-right: 5px;
+}
+
+#IconButton {
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+#IconButton:hover {
+    background: #656565;
+}
+
+#IconButton:pressed {
+    background: #868686;
+}
