@@ -2,7 +2,9 @@
 #define CONTENT_H
 
 #include <QWidget>
+#include "topbar.h"
 #include "tableview.h"
+#include "aria2rpc.h"
 
 class Content : public QWidget
 {
@@ -14,8 +16,16 @@ public:
 protected:
     void paintEvent(QPaintEvent *);
 
+private slots:
+    void handleAddedTaskToModel(const QString &gid);
+    void handleUpdateStatus(const QString &fileName, const QString &gid, const int &status,
+                                const long long &totalLength, const long long &completedLenth,
+                                const long long &speed, const int &percent);
+
 private:
+    TopBar *m_toolBar;
     TableView *m_tableView;
+    Aria2RPC *m_aria2RPC;
 };
 
 #endif // CONTENT_H
