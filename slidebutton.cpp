@@ -39,7 +39,7 @@ SlideButton::SlideButton(QWidget *parent)
     m_iconWidget->setFixedSize(16, 16);
 
     setLayout(mainLayout);
-    setFixedHeight(43);
+    setFixedHeight(50);
 }
 
 SlideButton::~SlideButton()
@@ -67,6 +67,6 @@ void SlideButton::paintEvent(QPaintEvent *e)
         return;
 
     // draw left separator line.
-    QRect leftRect(0, 5, 5, rect().height() - 10);
+    QRect leftRect(0, 10, 5, rect().height() - 20);
     painter.fillRect(leftRect, QColor("#0078D7"));
 }

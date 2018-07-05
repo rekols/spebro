@@ -31,3 +31,28 @@
 #IconButton:pressed {
     background: #868686;
 }
+
+QTableView {
+    alternate-background-color: transparent;
+    background-color: transparent;
+    border: none;
+}
+
+QHeaderView::section {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    height: 32px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+QHeaderView::section:horizontal {
+    border-bottom: 1px solid #F2F2F2;
+    border-right: 1px solid #F2F2F2;
+    padding-left: 15px;
+}
+
+QScrollBar {
+    background-color: transparent;
+}

@@ -2,6 +2,7 @@
 #define CONTENT_H
 
 #include <QWidget>
+#include "tableview.h"
 
 class Content : public QWidget
 {
@@ -12,6 +13,9 @@ public:
 
 protected:
     void paintEvent(QPaintEvent *);
+
+private:
+    TableView *m_tableView;
 };
 
 #endif // CONTENT_H

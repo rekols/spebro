@@ -10,8 +10,8 @@ SlideBar::SlideBar(QWidget *parent)
     SlideButton *downloadingBtn = new SlideButton;
     SlideButton *finishedBtn = new SlideButton;
 
-    downloadingBtn->setText(tr("Downloading"));
-    finishedBtn->setText(tr("Finished"));
+    downloadingBtn->setText(tr("下载中"));
+    finishedBtn->setText(tr("已完成"));
 
     downloadingBtn->setImage(":/images/nav_downloading.svg");
     finishedBtn->setImage(":/images/nav_finished.svg");

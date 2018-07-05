@@ -15,14 +15,21 @@ HEADERS += mainwindow.h \
     slidebutton.h \
     utils.h \
     topbar.h \
-    iconbutton.h
+    iconbutton.h \
+    tableview.h \
+    itemdelegate.h \
+    tablemodel.h \
+    global.h
 SOURCES += main.cpp mainwindow.cpp \
     slidebar.cpp \
     content.cpp \
     slidebutton.cpp \
     utils.cpp \
     topbar.cpp \
-    iconbutton.cpp
+    iconbutton.cpp \
+    tableview.cpp \
+    itemdelegate.cpp \
+    tablemodel.cpp
 
 RESOURCES += \
     recat-downloader.qrc
