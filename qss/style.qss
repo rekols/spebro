@@ -38,6 +38,10 @@ QTableView {
     border: none;
 }
 
+QTableView::item:selected {
+    background-color: red
+}
+
 QHeaderView::section {
     background-color: rgb(255, 255, 255);
     border: none;

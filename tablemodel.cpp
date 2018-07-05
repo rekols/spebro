@@ -40,7 +40,6 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
     case TableModel::FileName:
         return data->fileName;
     case TableModel::Size:
-        return QString("sssss");
         return QString("%1%2%3  %4").arg(data->completedLength).arg(sizeSepChar).arg(data->totalLength).arg(data->percent);
     case TableModel::Speed:
         return (data->status != Global::Status::Paused) ? data->speed : "";

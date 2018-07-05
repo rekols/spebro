@@ -15,7 +15,7 @@ Content::Content(QWidget *parent)
     layout->addWidget(m_tableView);
 
     // test for tableview.
-     for (int i = 1; i < 100; ++i) {
+     for (int i = 1; i < 5; ++i) {
          DataItem *data = new DataItem;
          data->gid = QString("r%1").arg(i);
          data->status = Global::Status::Active;

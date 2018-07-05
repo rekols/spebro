@@ -21,6 +21,11 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setPen(Qt::white);
 
+    // painting selection item background.
+    if (isSelected) {
+        painter->fillRect(rect, QColor("#4D4D4D"));
+    }
+
     const QRect textRect = rect.marginsRemoved(QMargins(10, 0, 0, 0));
 
     // painting each column item.
@@ -28,15 +33,15 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
 
         const QString name = painter->fontMetrics().elidedText(index.data(TableModel::FileName).toString(),
                                                                Qt::ElideRight, textRect.width() - 10);
-        const QString size = painter->fontMetrics().elidedText(index.data(TableModel::Size).toString(),
+        const QString total = painter->fontMetrics().elidedText(index.data(TableModel::TotalLength).toString(),
                                                                Qt::ElideRight, textRect.width() - 10);
         QRect nameRect = textRect;
         nameRect.setHeight(rect.height() / 2);
         painter->drawText(nameRect, Qt::AlignBottom | Qt::AlignLeft, name);
 
-        QRect sizeRect = textRect;
-        sizeRect.setTop(nameRect.bottom());
-        painter->drawText(sizeRect, Qt::AlignTop | Qt::AlignLeft, size);
+        QRect totalRect = textRect;
+        totalRect.setTop(nameRect.bottom());
+        painter->drawText(totalRect, Qt::AlignTop | Qt::AlignLeft, total);
 
     } else if (column == 1) {
 
@@ -57,7 +62,8 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         optionBar->rect = barRect;
         optionBar->minimum = 0;
         optionBar->maximum = 100;
-        optionBar->progress = index.data(TableModel::Percent).toInt();
+//        optionBar->progress = index.data(TableModel::Percent).toInt();
+        optionBar->progress = 50;
 
         QProgressBar *progressbar = new QProgressBar;
         QApplication::style()->drawControl(QStyle::CE_ProgressBarContents, optionBar, painter, progressbar);
