@@ -40,13 +40,14 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
 
     } else if (column == 1) {
 
-        QRect sizeRect = textRect;
-        sizeRect.setHeight(sizeRect.height() / 1.8);
-
-        QRect barRect = sizeRect;
-        barRect.setTop(sizeRect.bottom() + 7);
+        const int barHeight = 15;
+        QRect barRect = textRect;
+        barRect.setTop(rect.y() + rect.height() / 2 - barHeight);
         barRect.setWidth(barRect.width() - 10);
-        barRect.setHeight(15);
+        barRect.setHeight(barHeight);
+
+        QRect sizeRect = textRect;
+        sizeRect.setTop(barRect.bottom());
 
         QStyleOptionViewItem viewOption(option);
         initStyleOption(&viewOption, index);
@@ -62,7 +63,7 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         QApplication::style()->drawControl(QStyle::CE_ProgressBarContents, optionBar, painter, progressbar);
 
         const QString sizeText = painter->fontMetrics().elidedText(index.data(TableModel::Size).toString() + "%", Qt::ElideRight, textRect.width() - 10);
-        painter->drawText(sizeRect, Qt::AlignBottom | Qt::AlignLeft, sizeText);
+        painter->drawText(sizeRect, Qt::AlignTop | Qt::AlignLeft, sizeText);
 
     }
 }
