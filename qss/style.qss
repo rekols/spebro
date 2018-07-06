@@ -60,3 +60,12 @@ QHeaderView::section:horizontal {
 QScrollBar {
     background-color: transparent;
 }
+
+QProgressBar {
+    background-color: #717171;
+    border: none;
+}
+
+QProgressBar::chunk {
+    background-color: #0078D7;
+}

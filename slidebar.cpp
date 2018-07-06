@@ -33,7 +33,7 @@ SlideBar::SlideBar(QWidget *parent)
     m_buttonGroup->addButton(finishedBtn);
 
     setObjectName("SlideBar");
-    setFixedWidth(230);
+    setFixedWidth(210);
     setLayout(m_layout);
 
     connect(downloadingBtn, &QPushButton::clicked, this, [=] {

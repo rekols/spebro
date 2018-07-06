@@ -66,7 +66,7 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         optionBar->progress = 50;
 
         QProgressBar *progressbar = new QProgressBar;
-        QApplication::style()->drawControl(QStyle::CE_ProgressBarContents, optionBar, painter, progressbar);
+        QApplication::style()->drawControl(QStyle::CE_ProgressBar, optionBar, painter, progressbar);
 
         const QString sizeText = painter->fontMetrics().elidedText(index.data(TableModel::Size).toString() + "%", Qt::ElideRight, textRect.width() - 10);
         painter->drawText(sizeRect, Qt::AlignTop | Qt::AlignLeft, sizeText);

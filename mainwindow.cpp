@@ -18,7 +18,9 @@
  */
 
 #include "mainwindow.h"
+#include <QApplication>
 #include <QVBoxLayout>
+#include <QScreen>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -36,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(centralWidget);
     setMinimumSize(900, 550);
+    move(qApp->primaryScreen()->geometry().center() - geometry().center());
 }
 
 MainWindow::~MainWindow()
