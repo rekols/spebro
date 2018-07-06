@@ -25,11 +25,11 @@
 }
 
 #IconButton:hover {
-    background: #656565;
+    background: #4D4D4D;
 }
 
 #IconButton:pressed {
-    background: #868686;
+    background: #616161;
 }
 
 QTableView {

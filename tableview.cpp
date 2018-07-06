@@ -10,23 +10,21 @@ TableView::TableView(QWidget *parent)
     setItemDelegate(new ItemDelegate);
 
     QHeaderView *headerView = horizontalHeader();
-    verticalHeader()->setDefaultSectionSize(50);
     headerView->setSectionResizeMode(0, QHeaderView::Stretch);
-    headerView->setSectionResizeMode(1, QHeaderView::Stretch);
-    headerView->setHighlightSections(false);
+    headerView->setSectionResizeMode(1, QHeaderView::Fixed);
     headerView->setVisible(false);
 
+    // set row height.
     QHeaderView *vheaderView = verticalHeader();
-    vheaderView->setSectionResizeMode(QHeaderView::Fixed);
     vheaderView->setDefaultSectionSize(80);
 
     setEditTriggers(QAbstractItemView::NoEditTriggers);
-    setSelectionMode(QAbstractItemView::SingleSelection);
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
     setSelectionBehavior(QAbstractItemView::SelectRows);
     setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-    setAlternatingRowColors(false);
-    setSortingEnabled(false);
+    setAlternatingRowColors(true);
+    setSortingEnabled(true);
     setShowGrid(false);
 
     resizeColumnsToContents();

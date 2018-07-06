@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     centralLayout->addWidget(m_content);
 
     setCentralWidget(centralWidget);
-    setMinimumSize(900, 600);
+    setMinimumSize(900, 550);
 }
 
 MainWindow::~MainWindow()

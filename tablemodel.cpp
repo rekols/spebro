@@ -1,4 +1,5 @@
 #include "tablemodel.h"
+#include <QSize>
 
 TableModel::TableModel(QObject *parent)
     : QAbstractTableModel(parent)
@@ -53,6 +54,18 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
         return data->percent;
     case TableModel::TotalLength:
         return data->total;
+    }
+
+    return QVariant();
+}
+
+QVariant TableModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (orientation == Qt::Horizontal) {
+        // set column width.
+        if (role == Qt::SizeHintRole && section == 1) {
+            return QSize(300, 50);
+        }
     }
 
     return QVariant();
