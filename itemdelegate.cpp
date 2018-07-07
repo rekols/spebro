@@ -26,7 +26,7 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         painter->fillRect(rect, QColor("#4D4D4D"));
     }
 
-    const QRect textRect = rect.marginsRemoved(QMargins(10, 0, 0, 0));
+    const QRect textRect = rect.marginsRemoved(QMargins(20, 0, 30, 0));
 
     // painting each column item.
     if (column == 0) {
@@ -53,12 +53,10 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         const int barHeight = 10;
         QRect barRect = textRect;
         barRect.setTop(rect.y() + rect.height() / 2 - barHeight - 5);
-        barRect.setWidth(barRect.width() - 20);
         barRect.setHeight(barHeight);
 
         QRect speedRect = textRect;
         speedRect.setTop(barRect.bottom() + 6);
-        speedRect.setWidth(speedRect.width() - 20);
 
         QStyleOptionViewItem viewOption(option);
         initStyleOption(&viewOption, index);

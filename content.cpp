@@ -21,14 +21,7 @@ Content::Content(QWidget *parent)
 
     m_refreshTimer->setInterval(1000);
 
-    connect(m_toolBar, &TopBar::buttonClicked, this, [=] (const int &index) {
-        if (index == 0) {
-            NewTaskDialog *dlg = new NewTaskDialog;
-            connect(dlg, &NewTaskDialog::startDownload, this, &Content::handleDialogAddTask);
-            dlg->exec();
-        }
-     });
-
+    connect(m_toolBar, &TopBar::buttonClicked, this, &Content::handleToolBarClicked);
     connect(m_aria2RPC, &Aria2RPC::addedTask, this, &Content::handleAddedTaskToModel);
     connect(m_aria2RPC, &Aria2RPC::updateStatus, this, &Content::handleUpdateStatus);
     connect(m_refreshTimer, &QTimer::timeout, this, &Content::refreshEvent);
@@ -85,6 +78,15 @@ void Content::handleUpdateStatus(const QString &fileName, const QString &gid, co
 
 //    refreshTableView(m_slideBar->index());
     m_tableView->update();
+}
+
+void Content::handleToolBarClicked(const int &index)
+{
+    if (index == 0) {
+        NewTaskDialog *dlg = new NewTaskDialog;
+        connect(dlg, &NewTaskDialog::startDownload, this, &Content::handleDialogAddTask);
+        dlg->exec();
+    }
 }
 
 void Content::refreshEvent()

@@ -23,6 +23,7 @@ private slots:
     void handleUpdateStatus(const QString &fileName, const QString &gid, const int &status,
                                 const long long &totalLength, const long long &completedLenth,
                                 const long long &speed, const int &percent);
+    void handleToolBarClicked(const int &index);
     void refreshEvent();
 
 private:
