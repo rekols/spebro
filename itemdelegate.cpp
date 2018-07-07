@@ -45,7 +45,7 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
                                                                Qt::ElideRight, textRect.width() - 10);
 
         QRect totalRect = textRect;
-        totalRect.setTop(nameRect.bottom());
+        totalRect.setTop(nameRect.bottom() + 2);
         painter->drawText(totalRect, Qt::AlignTop | Qt::AlignLeft, total);
 
     } else if (column == 1) {
@@ -56,8 +56,9 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         barRect.setWidth(barRect.width() - 20);
         barRect.setHeight(barHeight);
 
-        QRect sizeRect = textRect;
-        sizeRect.setTop(barRect.bottom() + 5);
+        QRect speedRect = textRect;
+        speedRect.setTop(barRect.bottom() + 6);
+        speedRect.setWidth(speedRect.width() - 20);
 
         QStyleOptionViewItem viewOption(option);
         initStyleOption(&viewOption, index);
@@ -72,9 +73,15 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         QProgressBar *progressbar = new QProgressBar;
         QApplication::style()->drawControl(QStyle::CE_ProgressBar, optionBar, painter, progressbar);
 
-        const QString sizeText = painter->fontMetrics().elidedText(index.data(TableModel::Speed).toString(),
+        QString speedText = painter->fontMetrics().elidedText(index.data(TableModel::Speed).toString(),
                                                                    Qt::ElideRight, textRect.width() - 10);
-        painter->drawText(sizeRect, Qt::AlignTop | Qt::AlignLeft, sizeText);
+
+        if (index.data(TableModel::Status) == Global::Status::Waiting) {
+            speedText = "暂停中";
+        }
+
+        painter->drawText(speedRect, Qt::AlignTop | Qt::AlignLeft, speedText);
+        painter->drawText(speedRect, Qt::AlignTop | Qt::AlignRight, index.data(TableModel::Time).toString());
 
     }
 }
