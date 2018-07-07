@@ -19,6 +19,8 @@ public:
     explicit TableModel(QObject *parent = nullptr);
 
     void append(DataItem *data);
+    DataItem *find(const QString &gid);
+    const QList<DataItem *> dataList() { return m_dataList; };
 
 protected:
     int rowCount(const QModelIndex &parent) const;
@@ -28,6 +30,7 @@ protected:
 
 private:
     QList<DataItem *> m_dataList;
+    QMap<QString, DataItem *> m_map;
 };
 
 #endif // TABLEMODEL_H

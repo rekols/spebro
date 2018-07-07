@@ -33,4 +33,6 @@ TopBar::TopBar(QWidget *parent)
     layout->addStretch();
 
     setFixedHeight(100);
+
+    connect(newTaskBtn, &IconButton::clicked, this, [=] { emit buttonClicked(0); });
 }

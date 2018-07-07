@@ -69,3 +69,13 @@ QProgressBar {
 QProgressBar::chunk {
     background-color: #0078D7;
 }
+
+QLabel {
+    color: white;
+}
+
+QLineEdit {
+    background-color: #232323;
+    color: white;
+    border: none;
+}

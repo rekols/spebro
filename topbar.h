@@ -9,6 +9,9 @@ class TopBar : public QWidget
 
 public:
     explicit TopBar(QWidget *parent = nullptr);
+
+signals:
+    void buttonClicked(const int index);
 };
 
 #endif // TOPBAR_H

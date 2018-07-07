@@ -1,7 +1,8 @@
-#ifndef CONTENT_H
+﻿#ifndef CONTENT_H
 #define CONTENT_H
 
 #include <QWidget>
+#include <QTimer>
 #include "topbar.h"
 #include "tableview.h"
 #include "aria2rpc.h"
@@ -17,15 +18,18 @@ protected:
     void paintEvent(QPaintEvent *);
 
 private slots:
+    void handleDialogAddTask(const QString &url);
     void handleAddedTaskToModel(const QString &gid);
     void handleUpdateStatus(const QString &fileName, const QString &gid, const int &status,
                                 const long long &totalLength, const long long &completedLenth,
                                 const long long &speed, const int &percent);
+    void refreshEvent();
 
 private:
     TopBar *m_toolBar;
     TableView *m_tableView;
     Aria2RPC *m_aria2RPC;
+    QTimer *m_refreshTimer;
 };
 
 #endif // CONTENT_H

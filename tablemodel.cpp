@@ -13,9 +13,18 @@ void TableModel::append(DataItem *data)
 
     beginInsertRows(QModelIndex(), row, row);
     m_dataList.append(data);
+    m_map.insert(data->gid, data);
     endInsertRows();
 }
 
+DataItem *TableModel::find(const QString &gid)
+{
+    if (m_map.contains(gid)) {
+        return m_map.value(gid);
+    }
+
+    return nullptr;
+}
 
 int TableModel::rowCount(const QModelIndex &parent) const
 {
@@ -53,7 +62,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
     case TableModel::Percent:
         return data->percent;
     case TableModel::TotalLength:
-        return data->total;
+        return data->totalLength;
     }
 
     return QVariant();

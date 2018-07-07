@@ -20,7 +20,8 @@ HEADERS += mainwindow.h \
     itemdelegate.h \
     tablemodel.h \
     global.h \
-    aria2rpc.h
+    aria2rpc.h \
+    newtaskdialog.h
 SOURCES += main.cpp mainwindow.cpp \
     slidebar.cpp \
     content.cpp \
@@ -31,7 +32,8 @@ SOURCES += main.cpp mainwindow.cpp \
     tableview.cpp \
     itemdelegate.cpp \
     tablemodel.cpp \
-    aria2rpc.cpp
+    aria2rpc.cpp \
+    newtaskdialog.cpp
 
 RESOURCES += \
     recat-downloader.qrc

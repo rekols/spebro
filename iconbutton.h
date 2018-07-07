@@ -14,6 +14,7 @@ public:
 
     void setImage(const QString &filePath);
     void setText(const QString &text);
+    void setIconSize(const QSize &size);
 
 private:
     QSvgWidget *m_iconWidget;

@@ -20,7 +20,9 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QVBoxLayout>
+#include <QProcess>
 #include <QScreen>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -36,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
     centralLayout->addWidget(m_slideBar);
     centralLayout->addWidget(m_content);
 
+    startAria2c();
     setCentralWidget(centralWidget);
     setMinimumSize(900, 550);
     move(qApp->primaryScreen()->geometry().center() - geometry().center());
@@ -43,4 +46,24 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::startAria2c()
+{
+    QProcess *process = new QProcess(this);
+
+    // first killed aria2c.
+    process->start("killall aria2c");
+    process->waitForFinished(-1);
+
+    QStringList args;
+    args << QString("--dir=%1/Desktop").arg(QDir::homePath());
+    args << "--enable-rpc=true";
+    args << "--rpc-listen-port=7200";
+    args << "--rpc-allow-origin-all=true";
+    args << "--rpc-save-upload-metadata=true";
+    args << "--check-certificate=false";
+    args << "--disable-ipv6";
+
+    process->start("/usr/bin/aria2c", args);
 }

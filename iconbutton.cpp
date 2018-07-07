@@ -30,3 +30,8 @@ void IconButton::setText(const QString &text)
 {
     m_textLabel->setText(text);
 }
+
+void IconButton::setIconSize(const QSize &size)
+{
+    m_iconWidget->setFixedSize(size);
+}

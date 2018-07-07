@@ -33,6 +33,9 @@ public:
     ~MainWindow();
 
 private:
+    void startAria2c();
+
+private:
     SlideBar *m_slideBar;
     Content *m_content;
 };
