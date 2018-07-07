@@ -26,7 +26,7 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         painter->fillRect(rect, QColor("#4D4D4D"));
     }
 
-    const QRect textRect = rect.marginsRemoved(QMargins(20, 0, 30, 0));
+    const QRect textRect = rect.marginsRemoved(QMargins(70, 0, 30, 0));
 
     // painting each column item.
     if (column == 0) {
@@ -41,6 +41,11 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         if (index.data(TableModel::TotalLength) == 0) {
             return;
         }
+
+        QImage img = QIcon(":/images/file.svg").pixmap(QSize(32, 32) * qApp->devicePixelRatio()).toImage();
+        const int iconY = rect.y() + (rect.height() - img.height() / img.devicePixelRatio()) / 2;
+        painter->drawImage(20, iconY, img);
+
         const QString total = painter->fontMetrics().elidedText(index.data(TableModel::TotalLength).toString(),
                                                                Qt::ElideRight, textRect.width() - 10);
 

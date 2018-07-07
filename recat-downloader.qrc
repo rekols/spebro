@@ -13,5 +13,6 @@
         <file>images/pause_enable.svg</file>
         <file>images/canel.svg</file>
         <file>images/select_directory.svg</file>
+        <file>images/file.svg</file>
     </qresource>
 </RCC>
