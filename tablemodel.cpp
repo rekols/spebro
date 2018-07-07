@@ -17,6 +17,26 @@ void TableModel::append(DataItem *data)
     endInsertRows();
 }
 
+void TableModel::removeItem(DataItem *data)
+{
+    if (m_map.contains(data->gid)) {
+        beginRemoveRows(QModelIndex(), m_dataList.indexOf(data), m_dataList.indexOf(data));
+        m_map.remove(data->gid);
+        m_dataList.removeOne(data);
+        delete data;
+        endRemoveRows();
+    }
+}
+
+void TableModel::removeItems()
+{
+    beginRemoveRows(QModelIndex(), 0, m_dataList.size());
+    qDeleteAll(m_dataList.begin(), m_dataList.end());
+    m_dataList.clear();
+    m_map.clear();
+    endRemoveRows();
+}
+
 DataItem *TableModel::find(const QString &gid)
 {
     if (m_map.contains(gid)) {

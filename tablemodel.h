@@ -19,6 +19,8 @@ public:
     explicit TableModel(QObject *parent = nullptr);
 
     void append(DataItem *data);
+    void removeItem(DataItem *data);
+    void removeItems();
     DataItem *find(const QString &gid);
     const QList<DataItem *> dataList() { return m_dataList; };
 

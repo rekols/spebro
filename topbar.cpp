@@ -35,4 +35,7 @@ TopBar::TopBar(QWidget *parent)
     setFixedHeight(100);
 
     connect(newTaskBtn, &IconButton::clicked, this, [=] { emit buttonClicked(0); });
+    connect(pauseBtn, &IconButton::clicked, this, [=] { emit buttonClicked(1); });
+    connect(continueBtn, &IconButton::clicked, this, [=] { emit buttonClicked(2); });
+    connect(deleteBtn, &IconButton::clicked, this, [=] { emit buttonClicked(3); });
 }

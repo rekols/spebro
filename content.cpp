@@ -4,6 +4,7 @@
 #include <QVBoxLayout>
 #include <QDateTime>
 #include <QPainter>
+#include <QDebug>
 
 Content::Content(QWidget *parent)
     : QWidget(parent),
@@ -86,6 +87,63 @@ void Content::handleToolBarClicked(const int &index)
         NewTaskDialog *dlg = new NewTaskDialog;
         connect(dlg, &NewTaskDialog::startDownload, this, &Content::handleDialogAddTask);
         dlg->exec();
+    } else if (index == 1) {
+        onPauseBtnClicked();
+    } else if (index == 2) {
+        onStartBtnClicked();
+    } else if (index == 3) {
+        onDeleteBtnClicked();
+    }
+}
+
+
+void Content::onStartBtnClicked()
+{
+    const QModelIndexList &selected = m_tableView->selectionModel()->selectedRows();
+
+    for (const QModelIndex &index : selected) {
+        const QString gid = index.data(TableModel::GID).toString();
+        const int status = index.data(TableModel::Status).toInt();
+
+        if (status != Global::Status::Active) {
+            m_aria2RPC->unpause(gid);
+        }
+    }
+}
+
+void Content::onPauseBtnClicked()
+{
+    const QModelIndexList &selected = m_tableView->selectionModel()->selectedRows();
+
+    for (const QModelIndex &index : selected) {
+        const QString gid = index.data(TableModel::GID).toString();
+        const int status = index.data(TableModel::Status).toInt();
+
+        if (status != Global::Status::Paused) {
+            m_aria2RPC->pause(gid);
+        }
+    }
+}
+
+void Content::onDeleteBtnClicked()
+{
+    const QModelIndexList &selected = m_tableView->selectionModel()->selectedRows();
+    QList<DataItem *> deleteList;
+
+    for (const QModelIndex &index : selected) {
+        const QString gid = index.data(TableModel::GID).toString();
+        const int status = index.data(TableModel::Status).toInt();
+
+        if (status != Global::Status::Removed) {
+            DataItem *data = m_tableView->customModel()->find(gid);
+            deleteList << data;
+        }
+    }
+
+    for (int i = 0; i < deleteList.size(); ++i) {
+        DataItem *data = deleteList.at(i);
+        m_aria2RPC->remove(data->gid);
+        m_tableView->customModel()->removeItem(data);
     }
 }
 
@@ -98,15 +156,15 @@ void Content::refreshEvent()
         m_aria2RPC->tellStatus(item->gid);
     }
 
-    for (const auto *item : dataList) {
-        if (item->status == Global::Status::Active) {
-            ++activeCount;
-        }
-    }
+//    for (const auto *item : dataList) {
+//        if (item->status == Global::Status::Active) {
+//            ++activeCount;
+//        }
+//    }
 
-    if (activeCount == 0) {
-        m_refreshTimer->stop();
-    }
+//    if (activeCount == 0) {
+//        m_refreshTimer->stop();
+//    }
 
 //    setStatusText(dataList.count(), activeCount);
 }
