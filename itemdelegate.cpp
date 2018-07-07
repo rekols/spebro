@@ -74,7 +74,7 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         QString speedText = painter->fontMetrics().elidedText(index.data(TableModel::Speed).toString(),
                                                                    Qt::ElideRight, textRect.width() - 10);
 
-        if (index.data(TableModel::Status) == Global::Status::Waiting) {
+        if (index.data(TableModel::Status) == Global::Status::Paused) {
             speedText = "暂停中";
         }
 
