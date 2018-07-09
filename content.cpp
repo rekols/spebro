@@ -26,6 +26,7 @@ Content::Content(QWidget *parent)
     connect(m_aria2RPC, &Aria2RPC::addedTask, this, &Content::handleAddedTaskToModel);
     connect(m_aria2RPC, &Aria2RPC::updateStatus, this, &Content::handleUpdateStatus);
     connect(m_refreshTimer, &QTimer::timeout, this, &Content::refreshEvent);
+    connect(m_tableView, &TableView::doubleClicked, this, &Content::handleDoubleClicked);
 }
 
 void Content::paintEvent(QPaintEvent *e)
@@ -96,6 +97,17 @@ void Content::handleToolBarClicked(const int &index)
     }
 }
 
+void Content::handleDoubleClicked(const QModelIndex &index)
+{
+    const QString gid = index.data(TableModel::GID).toString();
+    const int status = index.data(TableModel::Status).toInt();
+
+    if (status == Global::Status::Active) {
+        m_aria2RPC->pause(gid);
+    } else {
+        m_aria2RPC->unpause(gid);
+    }
+}
 
 void Content::onStartBtnClicked()
 {
