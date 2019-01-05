@@ -15,6 +15,7 @@ signals:
     void startDownload(const QString &url);
 
 private slots:
+    void initDownloadFolder();
     void onDownloadBtnClicked();
 
 private:

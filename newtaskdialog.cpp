@@ -2,6 +2,7 @@
 #include "iconbutton.h"
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QStandardPaths>
 
 NewTaskDialog::NewTaskDialog(QWidget *parent)
     : QDialog(parent),
@@ -50,6 +51,7 @@ NewTaskDialog::NewTaskDialog(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(tr("New Task"));
     setFixedSize(500, 300);
+    initDownloadFolder();
 
     // set background color.
     QPalette pa = palette();
@@ -58,6 +60,11 @@ NewTaskDialog::NewTaskDialog(QWidget *parent)
 
     connect(downloadBtn, &IconButton::clicked, this, &NewTaskDialog::onDownloadBtnClicked);
     connect(canelBtn, &IconButton::clicked, this, &NewTaskDialog::close);
+}
+
+void NewTaskDialog::initDownloadFolder()
+{
+    m_pathEdit->setText(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
 }
 
 void NewTaskDialog::onDownloadBtnClicked()
