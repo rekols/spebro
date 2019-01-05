@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     w.show();
 
     a.setStyleSheet(Utils::getQssContent(":/qss/style.qss"));
-    
+
     return a.exec();
 }
 

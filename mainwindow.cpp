@@ -39,6 +39,8 @@ MainWindow::MainWindow(QWidget *parent)
     centralLayout->addWidget(m_content);
 
     startAria2c();
+    setWindowTitle("Spebro");
+    setWindowIcon(QIcon(":/images/spebro.svg"));
     setCentralWidget(centralWidget);
     setMinimumSize(900, 550);
     move(qApp->primaryScreen()->geometry().center() - geometry().center());
