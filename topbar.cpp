@@ -8,19 +8,19 @@ TopBar::TopBar(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout(this);
 
     IconButton *newTaskBtn = new IconButton;
-    newTaskBtn->setText("新建下载");
+    newTaskBtn->setText(tr("New Task"));
     newTaskBtn->setImage(":/images/new_enable.svg");
 
     IconButton *pauseBtn = new IconButton;
-    pauseBtn->setText("暂停");
+    pauseBtn->setText(tr("Pause"));
     pauseBtn->setImage(":/images/pause_enable.svg");
 
     IconButton *continueBtn = new IconButton;
-    continueBtn->setText("继续");
+    continueBtn->setText(tr("Continue"));
     continueBtn->setImage(":/images/continue_enable.svg");
 
     IconButton *deleteBtn = new IconButton;
-    deleteBtn->setText("删除");
+    deleteBtn->setText(tr("Delete"));
     deleteBtn->setImage(":/images/delete_enable.svg");
 
     layout->addWidget(newTaskBtn);

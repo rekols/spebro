@@ -85,7 +85,7 @@ void Content::handleUpdateStatus(const QString &fileName, const QString &gid, co
 void Content::handleToolBarClicked(const int &index)
 {
     if (index == 0) {
-        NewTaskDialog *dlg = new NewTaskDialog;
+        NewTaskDialog *dlg = new NewTaskDialog(this);
         connect(dlg, &NewTaskDialog::startDownload, this, &Content::handleDialogAddTask);
         dlg->exec();
     } else if (index == 1) {

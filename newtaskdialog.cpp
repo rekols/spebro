@@ -11,22 +11,22 @@ NewTaskDialog::NewTaskDialog(QWidget *parent)
     QVBoxLayout *layout = new QVBoxLayout(this);
     QHBoxLayout *bottomLayout = new QHBoxLayout;
 
-    QLabel *linkTips = new QLabel("链接:");
-    QLabel *pathTips = new QLabel("下载目录:");
+    QLabel *linkTips = new QLabel(tr("Download Link"));
+    QLabel *pathTips = new QLabel(tr("Download folder"));
 
     IconButton *downloadBtn = new IconButton;
     downloadBtn->setImage(":/images/nav_downloading.svg");
-    downloadBtn->setText("下载");
+    downloadBtn->setText(tr("Done"));
     downloadBtn->setIconSize(QSize(16, 16));
 
     IconButton *canelBtn = new IconButton;
     canelBtn->setImage(":/images/canel.svg");
-    canelBtn->setText("取消");
+    canelBtn->setText(tr("Cancel"));
     canelBtn->setIconSize(QSize(16, 16));
 
     IconButton *selectBtn = new IconButton;
     selectBtn->setImage(":/images/select_directory.svg");
-    selectBtn->setText("选择目录");
+    selectBtn->setText(tr("Select folder"));
     selectBtn->setIconSize(QSize(16, 16));
 
     m_linkEdit->setFixedHeight(40);
@@ -48,7 +48,7 @@ NewTaskDialog::NewTaskDialog(QWidget *parent)
     bottomLayout->addStretch();
 
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowTitle("新建下载");
+    setWindowTitle(tr("New Task"));
     setFixedSize(500, 300);
 
     // set background color.

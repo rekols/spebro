@@ -29,6 +29,9 @@ void IconButton::setImage(const QString &filePath)
 void IconButton::setText(const QString &text)
 {
     m_textLabel->setText(text);
+
+    // adjust width.
+    setFixedWidth(fontMetrics().width(text) + 30);
 }
 
 void IconButton::setIconSize(const QSize &size)
