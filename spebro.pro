@@ -5,7 +5,7 @@
 QT += core gui widgets network svg
 
 TEMPLATE = app
-TARGET = recat-downloader
+TARGET = spebro
 INCLUDEPATH += .
 
 # Input
@@ -22,6 +22,7 @@ HEADERS += mainwindow.h \
     global.h \
     aria2rpc.h \
     newtaskdialog.h
+
 SOURCES += main.cpp mainwindow.cpp \
     slidebar.cpp \
     content.cpp \
@@ -36,4 +37,4 @@ SOURCES += main.cpp mainwindow.cpp \
     newtaskdialog.cpp
 
 RESOURCES += \
-    recat-downloader.qrc
+    spebro.qrc

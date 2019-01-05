@@ -14,5 +14,6 @@
         <file>images/canel.svg</file>
         <file>images/select_directory.svg</file>
         <file>images/file.svg</file>
+        <file>images/spebro.svg</file>
     </qresource>
 </RCC>
