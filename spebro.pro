@@ -9,32 +9,33 @@ TARGET = spebro
 INCLUDEPATH += .
 
 # Input
-HEADERS += mainwindow.h \
-    slidebar.h \
-    content.h \
-    slidebutton.h \
-    utils.h \
-    topbar.h \
-    iconbutton.h \
-    tableview.h \
-    itemdelegate.h \
-    tablemodel.h \
-    global.h \
-    aria2rpc.h \
-    newtaskdialog.h
+HEADERS += src/mainwindow.h \
+    src/slidebar.h \
+    src/content.h \
+    src/slidebutton.h \
+    src/utils.h \
+    src/topbar.h \
+    src/iconbutton.h \
+    src/tableview.h \
+    src/itemdelegate.h \
+    src/tablemodel.h \
+    src/global.h \
+    src/aria2rpc.h \
+    src/newtaskdialog.h
 
-SOURCES += main.cpp mainwindow.cpp \
-    slidebar.cpp \
-    content.cpp \
-    slidebutton.cpp \
-    utils.cpp \
-    topbar.cpp \
-    iconbutton.cpp \
-    tableview.cpp \
-    itemdelegate.cpp \
-    tablemodel.cpp \
-    aria2rpc.cpp \
-    newtaskdialog.cpp
+SOURCES += src/main.cpp \
+    src/mainwindow.cpp \
+    src/slidebar.cpp \
+    src/content.cpp \
+    src/slidebutton.cpp \
+    src/utils.cpp \
+    src/topbar.cpp \
+    src/iconbutton.cpp \
+    src/tableview.cpp \
+    src/itemdelegate.cpp \
+    src/tablemodel.cpp \
+    src/aria2rpc.cpp \
+    src/newtaskdialog.cpp
 
 RESOURCES += \
     spebro.qrc
